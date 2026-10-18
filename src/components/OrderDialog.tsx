@@ -2,9 +2,9 @@
 
 import { createContext, useCallback, useContext, useRef } from "react";
 
-import { featuredLocation, phoneHref } from "@/data/restaurant";
+import { mainPhone, phoneHref } from "@/data/restaurant";
 
-import { Serape } from "./Serape";
+import { Greca } from "./Greca";
 
 const OrderDialogContext = createContext<(() => void) | null>(null);
 
@@ -21,18 +21,18 @@ export function OrderDialogProvider({ children }: { children: React.ReactNode })
         ref={dialogRef}
         aria-labelledby="order-dialog-title"
         aria-describedby="order-dialog-description"
-        className="m-auto w-[calc(100%-2rem)] max-w-md overflow-hidden rounded-2xl bg-crema p-0 text-ink shadow-2xl backdrop:bg-verde-deep/80 backdrop:backdrop-blur-sm"
+        className="m-auto w-[calc(100%-2rem)] max-w-md overflow-hidden rounded-2xl bg-crema p-0 text-ink shadow-2xl backdrop:bg-vino-deep/80 backdrop:backdrop-blur-sm"
         onClick={(event) => {
           // Clicks on the backdrop land on the <dialog> itself, not its content.
           if (event.target === event.currentTarget) close();
         }}
       >
-        <Serape />
+        <Greca />
         <div className="p-8 text-center">
-          <p className="inline-block -rotate-2 bg-amarillo px-3 py-1 font-condensed text-sm font-semibold uppercase tracking-[0.2em]">
+          <p className="inline-block rounded-sm bg-verde px-3 py-1 font-condensed text-sm font-semibold uppercase tracking-[0.2em] text-lima">
             ¡Muy pronto! · Coming soon
           </p>
-          <h2 id="order-dialog-title" className="mt-4 font-display text-3xl uppercase text-verde">
+          <h2 id="order-dialog-title" className="mt-4 font-display text-3xl text-vino">
             Online Ordering
           </h2>
           <p id="order-dialog-description" className="mt-4 leading-relaxed text-muted">
@@ -41,10 +41,10 @@ export function OrderDialogProvider({ children }: { children: React.ReactNode })
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <a
-              href={phoneHref(featuredLocation.phoneDisplay)}
-              className="rounded-full bg-rojo px-6 py-3 font-condensed text-base font-semibold uppercase tracking-wider text-white transition-colors hover:bg-rojo-deep"
+              href={phoneHref(mainPhone)}
+              className="rounded-full bg-vino px-6 py-3 font-condensed text-base font-semibold uppercase tracking-wider text-lima transition-colors hover:bg-vino-deep"
             >
-              Call {featuredLocation.phoneDisplay}
+              Call {mainPhone}
             </a>
             <button
               type="button"
@@ -55,13 +55,6 @@ export function OrderDialogProvider({ children }: { children: React.ReactNode })
               Close
             </button>
           </div>
-          <a
-            href="#locations"
-            onClick={close}
-            className="mt-5 inline-block text-sm font-semibold text-verde underline underline-offset-4"
-          >
-            Find another location
-          </a>
         </div>
       </dialog>
     </OrderDialogContext.Provider>

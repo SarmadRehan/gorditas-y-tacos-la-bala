@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo_Black, Nunito_Sans, Oswald } from "next/font/google";
+import { Nunito_Sans, Oswald, Rye } from "next/font/google";
 
 import { restaurant } from "@/data/restaurant";
 
 import "./globals.css";
 
-const archivoBlack = Archivo_Black({
-  variable: "--font-archivo-black",
+// Western display face, close to the lettering on the storefront sign.
+const rye = Rye({
+  variable: "--font-rye",
   subsets: ["latin"],
   weight: "400",
 });
@@ -23,12 +24,12 @@ const nunitoSans = Nunito_Sans({
 });
 
 export const metadata: Metadata = {
-  title: `${restaurant.name} | Authentic Mexican Tacos in Houston`,
+  title: `${restaurant.name} | Gorditas, Tacos & Tortas in Houston`,
   description: restaurant.description,
   // Demo build: keep it out of search results so it never competes with the restaurant's own listings.
   robots: { index: false, follow: false },
   openGraph: {
-    title: `${restaurant.name} | Authentic Mexican Tacos in Houston`,
+    title: `${restaurant.name} | Gorditas, Tacos & Tortas in Houston`,
     description: restaurant.description,
     type: "website",
     locale: "en_US",
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0d5c32",
+  themeColor: "#4a1a2c",
 };
 
 export default function RootLayout({
@@ -45,10 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${archivoBlack.variable} ${oswald.variable} ${nunitoSans.variable}`}
-    >
+    <html lang="en" className={`${rye.variable} ${oswald.variable} ${nunitoSans.variable}`}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   );

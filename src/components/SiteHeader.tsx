@@ -2,15 +2,14 @@
 
 import { useEffect, useState } from "react";
 
-import { featuredLocation, phoneHref } from "@/data/restaurant";
+import { mainPhone, phoneHref } from "@/data/restaurant";
 
 import { OrderButton } from "./OrderDialog";
 import { Wordmark } from "./Wordmark";
 
 const navLinks = [
+  { href: "#favoritos", label: "Favoritos" },
   { href: "#menu", label: "Menú" },
-  { href: "#desayunos", label: "Desayunos" },
-  { href: "#story", label: "Historia" },
   { href: "#locations", label: "Locations" },
 ];
 
@@ -27,17 +26,17 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-40 border-b-4 border-amarillo bg-verde text-crema">
-      <div className="mx-auto flex h-18 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <a href="#top" className="shrink-0" aria-label="Tacos La Bala, back to top">
+    <header className="sticky top-0 z-40 border-b-4 border-terracota bg-vino text-crema">
+      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+        <a href="#top" className="shrink-0" aria-label="Gorditas y Tacos La Bala, back to top">
           <Wordmark />
         </a>
 
         <nav aria-label="Primary" className="hidden md:block">
-          <ul className="flex items-center gap-7 font-condensed text-base font-semibold uppercase tracking-[0.12em]">
+          <ul className="flex items-center gap-8 font-condensed text-base font-semibold uppercase tracking-[0.12em]">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="transition-colors hover:text-amarillo">
+                <a href={link.href} className="transition-colors hover:text-lima">
                   {link.label}
                 </a>
               </li>
@@ -47,12 +46,12 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-4 md:flex">
           <a
-            href={phoneHref(featuredLocation.phoneDisplay)}
-            className="font-condensed text-base font-medium tracking-wide hover:text-amarillo"
+            href={phoneHref(mainPhone)}
+            className="font-condensed text-base font-medium tracking-wide hover:text-lima"
           >
-            {featuredLocation.phoneDisplay}
+            {mainPhone}
           </a>
-          <OrderButton className="rounded-full bg-rojo px-5 py-2.5 font-condensed text-base font-semibold uppercase tracking-wider text-white shadow-[3px_3px_0_#1b1712] transition-transform hover:-translate-y-0.5">
+          <OrderButton className="rounded-full bg-lima px-5 py-2.5 font-condensed text-base font-semibold uppercase tracking-wider text-vino-deep transition-colors hover:bg-crema">
             Order Online
           </OrderButton>
         </div>
@@ -72,7 +71,7 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <nav id="mobile-nav" aria-label="Mobile" className="border-t border-crema/15 bg-verde-deep md:hidden">
+        <nav id="mobile-nav" aria-label="Mobile" className="border-t border-crema/15 bg-vino-deep md:hidden">
           <ul className="flex flex-col px-4 py-2 font-condensed text-lg font-semibold uppercase tracking-[0.12em]">
             {navLinks.map((link) => (
               <li key={link.href}>

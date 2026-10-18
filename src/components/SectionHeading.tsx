@@ -11,17 +11,15 @@ export function SectionHeading({ eyebrow, title, intro, id, tone = "light" }: Se
   return (
     <div className="mx-auto max-w-2xl text-center">
       <p
-        className={`inline-block -rotate-2 rounded-sm px-3 py-1 font-condensed text-sm font-semibold uppercase tracking-[0.2em] ${
-          dark ? "bg-amarillo text-ink" : "bg-rojo text-white"
+        className={`inline-block rounded-sm px-3 py-1 font-condensed text-sm font-semibold uppercase tracking-[0.2em] ${
+          dark ? "bg-lima text-vino-deep" : "bg-verde text-lima"
         }`}
       >
         {eyebrow}
       </p>
       <h2
         id={id}
-        className={`mt-4 font-display text-4xl uppercase text-balance sm:text-5xl ${
-          dark ? "text-amarillo" : "text-verde"
-        }`}
+        className={`mt-4 font-display text-4xl text-balance sm:text-5xl ${dark ? "text-lima" : "text-vino"}`}
       >
         {title}
       </h2>
